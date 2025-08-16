@@ -200,7 +200,7 @@ if st.session_state["predicted_once"] and st.session_state["latest_preds"]:
             done_disabled = disable_all or not editable
 
             # --- Copy button ---
-            if col_copy.button("📋 Copy", key=f"copy_{key}", disabled=copy_disabled):
+            if col_copy.button("📋", key=f"copy_{key}", disabled=copy_disabled):
                 pyperclip.copy(st.session_state["fb_values"].get(key, ""))
                 st.session_state["copied_box"] = key
                 st.session_state["copied_time"] = time.time()
@@ -210,13 +210,13 @@ if st.session_state["predicted_once"] and st.session_state["latest_preds"]:
                 raise RerunException(RerunData())
 
             # --- Edit button ---
-            if col_edit.button("✏️ Edit", key=f"edit_{key}", disabled=edit_disabled):
+            if col_edit.button("✏️", key=f"edit_{key}", disabled=edit_disabled):
                 st.session_state["editable_boxes"] = {k: k == key for k in LABEL_COLS}
                 st.session_state["active_box"] = key
                 raise RerunException(RerunData())
 
             # --- Done button ---
-            if editable and col_done.button("✅ Done", key=f"done_{key}", disabled=done_disabled):
+            if editable and col_done.button("✅", key=f"done_{key}", disabled=done_disabled):
                 st.session_state["fb_values"][key] = st.session_state["editing_temp"].get(key, text_val)
                 st.session_state["editable_boxes"][key] = False
                 st.session_state["active_box"] = None
