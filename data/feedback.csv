@@ -1,0 +1,16 @@
+text,disease_type,stage_subtype,line_of_therapy,biomarker
+breast cancer,Breast cancer,,,
+egfr,,,,EGFR
+nsclc,Non-small cell lung cancer,,,
+alk positive AML,Acute Myeloid Leukemia,,,ALK
+ALK first line breast cancer,Breast cancer,,First Line,ALK
+ALK first line nsclc,Non-small cell lung cancer,,First line,ALK
+ALK,,,,ALK
+nsclc alk second Line,Non-small cell lung cancer,,Second Line,ALK
+ALL,Acute Lymphoblastic Leukemia,,,
+"breast, nsclc, alk, first line",Breast;Non-small cell lung cancer,,First Line,ALK
+Anal cancer,Anal,,,
+AML,Acute Myeloid Leukemia,,,
+ovarian cancer,Ovarian,,,
+EGFR positive Ovarian cancer,Ovarian,,,EGFR
+EGFR Negative Ovarian cancer,Ovarian,,,

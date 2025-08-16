@@ -1,0 +1,6 @@
+trial_id,title,summary,inclusion_criteria,disease_type,stage_subtype,line_of_therapy,biomarker
+X001,EGFR TKI in advanced NSCLC,Gefitinib or erlotinib in EGFR+ advanced NSCLC,"EGFR positive, Stage IV NSCLC",Non-small cell lung cancer,Stage IV,,EGFR
+X001,EGFR TKI in advanced NSCLC,Gefitinib or erlotinib in EGFR- advanced NSCLC,"Untreated, EGFR negative, advanced NSCLC",Non-small cell lung cancer,Stage III;Stage IV,first-line,
+X002,HER2 breast neoadjuvant,Trastuzumab-based neoadjuvant therapy,HER2+ Stage III breast cancer,Breast cancer,Stage III,neoadjuvant,HER2
+X003,BRAF metastatic melanoma trial,BRAF inhibitor for BRAF V600 metastatic melanoma,Unresectable Stage IV melanoma,Melanoma,Stage IV,,BRAF
+X004,KRAS CRC second-line,KRAS G12C inhibitor following prior therapy,Metastatic colorectal cancer with KRAS G12C,Colorectal cancer,Stage IV,second-line,KRAS

@@ -1,0 +1,12 @@
+cc,title,summary,inclusion_criteria,disease_type,stage_subtype,line_of_therapy,biomarker
+T001,First-line EGFR-mutant NSCLC,A phase III study evaluating gefitinib in advanced NSCLC with EGFR mutations,"Adults with advanced NSCLC, confirmed EGFR mutation",Non-small cell lung cancer,Stage III;Stage IV,first-line,EGFR
+T002,Adjuvant therapy in early breast cancer,A randomized trial of adjuvant therapy in early-stage,ER+ breast cancer,Breast cancer,Stage I;Stage II,adjuvant,Estrogen receptor positive
+T003,Neoadjuvant therapy for HER2+ breast cancer,A study of neoadjuvant regimen in HER2 positive tumors,"Stage III breast cancer, HER2+",Breast cancer,Stage III,neoadjuvant,HER2 positive
+T004,BRAF inhibitors in metastatic melanoma,Assessment of BRAF inhibitor efficacy,Unresectable or metastatic melanoma with BRAF V600,Melanoma,Stage III;Stage IV,,BRAF
+T005,KRAS G12C inhibitors in CRC,Evaluating response in KRAS-mutant colorectal cancer,"Metastatic colorectal cancer, KRAS G12C",Colorectal cancer,Stage IV,,KRAS
+T006,ALK-positive NSCLC second-line,A trial of ALK inhibitor after progression,"Stage IV NSCLC, ALK+",Non-small cell lung cancer,Stage IV,second-line,ALK
+T008,MSI-H colorectal immunotherapy,Checkpoint inhibitors in MSI-H CRC,"Metastatic CRC, MSI-H",Colorectal cancer,Stage IV,,MSI-H
+T009,ER/PR positive breast maintenance,Maintenance therapy in HR+ breast cancer,"Stage II breast cancer, ER+, PR+",Breast cancer,Stage II,maintenance,Estrogen receptor positive;Progesterone receptor positive
+T010,Localized melanoma adjuvant,A study in resected stage III melanoma,"Stage III melanoma, resected",Melanoma,Stage III,adjuvant,
+T011,NSCLC general trial,Non-small cell lung cancer mixed population,"Stage IV NSCLC, EGFR wildtype",Non-small cell lung cancer,Stage IV,,
+T012,Breast neoadjuvant trial,Anthracycline-taxane based regimen,Stage II-III breast cancer,Breast cancer,Stage II;Stage III,neoadjuvant,
