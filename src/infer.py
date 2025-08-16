@@ -2,8 +2,12 @@ from .ensemble import merge_predictions
 from .rule_based import load_mapping, match_keywords
 import numpy as np
 
-# Load rule-based keyword mapping
-_keyword_mapping = load_mapping()
+# Load rule-based keyword mapping safely
+try:
+    _keyword_mapping = load_mapping()  # uses cp1252 fallback internally
+except Exception as e:
+    print(f"⚠️ Failed to load keyword mapping: {e}")
+    _keyword_mapping = None
 
 
 def _empty_outputs(models: dict) -> dict:
@@ -36,9 +40,12 @@ def predict(text: str, models: dict) -> dict:
 
     # --- Rule-based predictions ---
     try:
-        rule_preds, matched_keywords = match_keywords(text, _keyword_mapping)
-        # Ensure each rule prediction is a list
-        rule_preds = {k: v if isinstance(v, list) else [v] for k, v in rule_preds.items()}
+        if _keyword_mapping is not None:
+            rule_preds, matched_keywords = match_keywords(text, _keyword_mapping)
+            # Ensure each rule prediction is a list
+            rule_preds = {k: v if isinstance(v, list) else [v] for k, v in rule_preds.items()}
+        else:
+            rule_preds, matched_keywords = {k: [] for k in models.keys()}, []
     except Exception:
         rule_preds, matched_keywords = {k: [] for k in models.keys()}, []
 

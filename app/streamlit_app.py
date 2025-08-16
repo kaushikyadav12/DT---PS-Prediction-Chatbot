@@ -239,7 +239,8 @@ if st.session_state["predicted_once"] and st.session_state["latest_preds"]:
                 st.error("⚠️ Feedback cannot be empty. Please enter at least one value in the boxes.")
             else:
                 if Path(FEEDBACK_CSV).exists():
-                    df_feedback = pd.read_csv(FEEDBACK_CSV, dtype=str, keep_default_na=False)
+                    # ✅ Use cp1252 encoding
+                    df_feedback = pd.read_csv(FEEDBACK_CSV, dtype=str, keep_default_na=False, encoding='cp1252')
                 else:
                     df_feedback = pd.DataFrame(columns=["text"] + LABEL_COLS)
 
@@ -248,5 +249,5 @@ if st.session_state["predicted_once"] and st.session_state["latest_preds"]:
                 else:
                     new_row = pd.DataFrame([{"text": user_text_val, **new_vals}], dtype=str)
                     df_feedback = pd.concat([df_feedback, new_row], ignore_index=True)
-                    df_feedback.to_csv(FEEDBACK_CSV, index=False)
+                    df_feedback.to_csv(FEEDBACK_CSV, index=False, encoding='cp1252')
                     st.success("✅ Feedback submitted successfully!")

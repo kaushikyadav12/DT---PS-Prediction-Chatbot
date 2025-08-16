@@ -5,8 +5,13 @@ from .config import KEYWORDS_CSV, LABEL_COLS
 def load_mapping(path=KEYWORDS_CSV) -> pd.DataFrame:
     """
     Load keyword-to-label mapping CSV and fill missing values.
+    Uses cp1252 encoding to avoid UnicodeDecodeError on Windows.
     """
-    df = pd.read_csv(path, dtype=str, keep_default_na=False)
+    try:
+        df = pd.read_csv(path, dtype=str, keep_default_na=False, encoding='cp1252')
+    except Exception:
+        # fallback to utf-8 if cp1252 fails
+        df = pd.read_csv(path, dtype=str, keep_default_na=False, encoding='utf-8')
     return df.fillna("")
 
 def match_keywords(text: str, mapping_df: pd.DataFrame):
@@ -25,30 +30,14 @@ def match_keywords(text: str, mapping_df: pd.DataFrame):
         if not kw:
             continue
         if kw in text_low:
-            # disease_type
-            if row.get("disease_type"):
-                for v in str(row["disease_type"]).split(";"):
-                    v = v.strip()
-                    if v:
-                        votes["disease_type"].add(v)
-            # stage_subtype
-            if row.get("stage_subtype"):
-                for v in str(row["stage_subtype"]).split(";"):
-                    v = v.strip()
-                    if v:
-                        votes["stage_subtype"].add(v)
-            # line_of_therapy
-            if row.get("line_of_therapy"):
-                for v in str(row["line_of_therapy"]).split(";"):
-                    v = v.strip()
-                    if v:
-                        votes["line_of_therapy"].add(v)
-            # biomarker
-            if row.get("biomarker"):
-                for v in str(row["biomarker"]).split(";"):
-                    v = v.strip()
-                    if v:
-                        votes["biomarker"].add(v)
+            # Collect votes for each label column
+            for col in LABEL_COLS:
+                val = row.get(col)
+                if val:
+                    for v in str(val).split(";"):
+                        v = v.strip()
+                        if v:
+                            votes[col].add(v)
             matched.append(kw)
 
     # Ensure all LABEL_COLS are present, even if empty
